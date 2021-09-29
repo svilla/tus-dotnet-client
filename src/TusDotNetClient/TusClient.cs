@@ -53,7 +53,7 @@ namespace TusDotNetClient
         public async Task<string> CreateAsync(string url, FileInfo fileInfo,
             params (string key, string value)[] metadata)
         {
-            if (!metadata.Any(m => m.key == "filename"))
+            if (!metadata.Any(m => m.key.ToLower() == "filename"))
             {
                 metadata = metadata.Concat(new[] {("filename", fileInfo.Name)}).ToArray();
             }
